@@ -106,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param rect A rectangle specified in the local coordinate system (bounds) of view. 在视图的局部坐标系（bounds）中指定的矩形。
  @param view The view or window with rect in its coordinate system.
     If view is nil, this method instead converts from window base coordinates.
-    在其坐标系中具有rect的视图或窗口。如果视图为nil，则该方法将转换为窗口基坐标。
+    在其坐标系中具有rect的视图或窗口，rect 对应的视图或窗口。如果视图为nil，则该方法将转换为窗口基坐标。
  @return The converted rectangle.转换到消息接收者的矩形。
  */
 - (CGRect)convertRect:(CGRect)rect fromViewOrWindow:(nullable UIView *)view;
