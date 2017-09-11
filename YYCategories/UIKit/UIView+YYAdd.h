@@ -74,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
  Converts a point from the receiver's coordinate system to that of the specified view or window.将点从消息接收者的坐标系转换为指定的视图或窗口。
  
  @param point A point specified in the local coordinate system (bounds) of the receiver.在消息接收者的局部坐标系（边界）中指定的点。
- @param view  The view or window into whose coordinate system point is to be converted.If view is nil, this method instead converts to window base coordinates.要转换其坐标系点的视图或窗口。如果视图为零，则该方法转换为窗口基坐标。在当前窗口内的视图此参数可以不传。
+ @param view  The view or window into whose coordinate system point is to be converted.If view is nil, this method instead converts to window base coordinates.将point点从消息接收者转换到想转换的视图上，对应的视图。如果视图为零，则该方法转换为窗口基坐标。
  @return The point converted to the coordinate system of view.返回转换后的坐标点。
  */
 - (CGPoint)convertPoint:(CGPoint)point toViewOrWindow:(nullable UIView *)view;
@@ -82,9 +82,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Converts a point from the coordinate system of a given view or window to that of the receiver.将点从给定视图或窗口的坐标系转换为消息接收者的坐标。
  
- @param point A point specified in the local coordinate system (bounds) of view.在局部坐标系（view）中指定的点。在当前窗口内的视图此参数可以不传。
+ @param point A point specified in the local coordinate system (bounds) of view.在局部坐标系（view）中指定的点。
  @param view  The view or window with point in its coordinate system. 
- If view is nil, this method instead converts from window base coordinates.视图或窗口与其坐标系中的点。如果视图为nil，则该方法将转换为窗口基坐标。在当前窗口内的视图此参数可以不传。
+ If view is nil, this method instead converts from window base coordinates.视图或窗口与其坐标系中的点，point 点所在视图。如果视图为nil，则该方法将转换为窗口基坐标。
  @return The point converted to the local coordinate system (bounds) of the receiver.转换为消息接收者坐标系的点。
  */
 - (CGPoint)convertPoint:(CGPoint)point fromViewOrWindow:(nullable UIView *)view;
@@ -93,15 +93,15 @@ NS_ASSUME_NONNULL_BEGIN
  Converts a rectangle from the receiver's coordinate system to that of another view or window.
  将矩形从接收器的坐标系转换为另一个视图或窗口的坐标系。
  
- @param rect A rectangle specified in the local coordinate system (bounds) of the receiver.在消息的接收者的局部坐标系（边界）中指定的矩形。
- @param view The view or window that is the target of the conversion operation. If view is nil, this method instead converts to window base coordinates.作为转换操作目标的视图或窗口。 如果视图为零，则该方法转换为窗口基坐标。在当前窗口内的视图此参数可以不传。
+ @param rect A rectangle specified in the local coordinate system (bounds) of the receiver.在消息的接收者的坐标系（边界）中指定的矩形。
+ @param view The view or window that is the target of the conversion operation. If view is nil, this method instead converts to window base coordinates.作为转换操作目标的视图或窗口。 如果视图为零，则该方法转换为窗口基坐标。
  @return The converted rectangle.转换到 view 上的矩形。
  */
 - (CGRect)convertRect:(CGRect)rect toViewOrWindow:(nullable UIView *)view;
 
 /**
  Converts a rectangle from the coordinate system of another view or window to that of the receiver.
- 将矩形从另一个视图或窗口的坐标系转换为接收器的坐标系。
+ 将矩形从view 视图或窗口的坐标系转换为接收器的坐标系。
  
  @param rect A rectangle specified in the local coordinate system (bounds) of view. 在视图的局部坐标系（bounds）中指定的矩形。
  @param view The view or window with rect in its coordinate system.
