@@ -21,18 +21,19 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Perform a series of method calls that insert, delete, or select rows and
  sections of the receiver.
+ 此方法用来更新一系列的插入，删除，或者选择多行和多组的操作。
  
  @discussion Perform a series of method calls that insert, delete, or select
              rows and sections of the table. Call this method if you want
              subsequent insertions, deletion, and selection operations (for
              example, cellForRowAtIndexPath: and indexPathsForVisibleRows)
-             to be animated simultaneously.
+             to be animated simultaneously.调用此方法可以更新一系列的插入，删除，或者选择多行和多组的操作，并执行动画。
  
  @discussion If you do not make the insertion, deletion, and selection calls
              inside this block, table attributes such as row count might become
              invalid. You should not call reloadData within the block; if you
              call this method within the group, you will need to perform any
-             animations yourself.
+             animations yourself. 在beginUpdates和endUpdates中执行insert,delete,select时，动画效果更加同步和顺滑，否则动画卡顿且table的属性（如row count）可能会失效。在beginUpdates 和 endUpdates中执行 reloadData 方法和直接reloadData一样，没有相应的中间动画。
  
  @param block  A block combine a series of method calls.
  */
@@ -43,7 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @discussion            Invoking this method does not cause the delegate to 
                         receive a scrollViewDidScroll: message, as is normal for 
-                        programmatically-invoked user interface operations.
+ programmatically-invoked user interface operations.调用此方法不会导致委托
+                          收到一个scrollViewDidScroll：消息，正常为
+                          以编程方式调用用户界面操作。
  
  @param row             Row index in section. NSNotFound is a valid value for
                         scrolling to a section with zero rows.
@@ -164,20 +167,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Reloads the specified section using a given animation effect.
+ 刷新指定的行。
  
  @param section    An index identifying the section to reload.
  
- @param animation  A constant that indicates how the reloading is to be animated, 
+ @param animation  A constant that indicates how the reloading is to be animated,
                    for example, fade out or slide out from the bottom. The 
                    animation constant affects the direction in which both the 
                    old and the new section rows slide. For example, if the 
                    animation constant is UITableViewRowAnimationRight, the old 
-                   rows slide out to the right and the new cells slide in from the right.
+                   rows slide out to the right and the new cells slide in from the right.                                                一个常量，表示如何重新加载是动画，
+                     例如，从底部淡出或滑出。该
+                     动画常数影响两者的方向
+                     旧的部分行滑动。 例如，如果
+                     动画常数是UITableViewRowAnimationRight，旧的
+                     行向右滑出，新单元格从右侧滑入。
  */
 - (void)reloadSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation;
 
 /**
  Unselect all rows in tableView.
+ 取消所有选中的行。
  
  @param animated YES to animate the transition, NO to make the transition immediate.
  */
