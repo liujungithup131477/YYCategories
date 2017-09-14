@@ -41,7 +41,8 @@ YYSYNTH_DUMMY_CLASS(UIScreen_YYAdd);
 
 - (CGRect)boundsForOrientation:(UIInterfaceOrientation)orientation {
     CGRect bounds = [self bounds];
-    
+    /** UIInterfaceOrientationIsLandscape:返回一个布尔值，指示用户界面当前是否以横向显示。
+     接口方向可能与设备方向不同。 您通常在视图控制器代码中调用此函数来检查当前方向。*/
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         CGFloat buffer = bounds.size.width;
         bounds.size.width = bounds.size.height;
